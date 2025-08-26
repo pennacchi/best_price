@@ -3,7 +3,9 @@ env
 env_sample
 venv
 other_files
-src
+src/market_001
+src/utils
 logs
 requirements.txt
 dockerfile
+__pycache__
