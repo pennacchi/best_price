@@ -1,0 +1,9 @@
+data
+env
+env_sample
+venv
+other_files
+src
+logs
+requirements.txt
+dockerfile
