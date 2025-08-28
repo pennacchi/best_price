@@ -1,9 +1,7 @@
 #! supermarket_extractions/venv/bin/python
-from math import e
 import sys
 import json
 from pathlib import Path
-import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
