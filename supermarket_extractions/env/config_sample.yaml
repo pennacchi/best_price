@@ -1,0 +1,16 @@
+environemnt_selected: "dev"
+environemnt_targets:
+  dev:
+    best_price_db:
+      host: "localhost"
+      port: 5433
+      user: "postgres"
+      password: "postgres"
+      db: "best_price_dev"
+  prod:
+    best_price_db:
+      host: "localhost"
+      port: 5433
+      user: "postgres"
+      password: "postgres"
+      db: "best_price_prod"

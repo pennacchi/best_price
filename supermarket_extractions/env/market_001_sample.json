@@ -1,0 +1,50 @@
+{
+  "base_url": "https://HIDDEN-FOR-PRIVACY-REASONS",
+  "default_headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7",
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "origin": "https://www.HIDDEN-FOR-PRIVACY-REASONS.com",
+    "pragma": "no-cache",
+    "priority": "u=1, i",
+    "referer": "https://www.HIDDEN-FOR-PRIVACY-REASONS.com/",
+    "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/237.84.2.178 Safari/537.36"
+  },
+  "stores": [
+    {
+      "storeId": 2232,
+      "store": "Market 001 HIDDEN-FOR-PRIVACY-REASONS",
+      "active": true
+    }
+  ],
+  "endpoints": {
+    "categories": {
+      "method": "GET",
+      "path": "https://www.HIDDEN-FOR-PRIVACY-REASONS.com/",
+      "parameters": {}
+    },
+    "products": {
+      "method": "POST",
+      "path": "/pa/v3/products/ecom/skuLivePrice",
+      "parameters": {
+        "storeId": "{storeId}",
+        "sellType": "null",
+        "sortBy": "null",
+        "isClienteMais": "true"
+      }
+    },
+    "products_in_category": {
+      "method": "POST",
+      "path": "/pa/search/category-page",
+      "parameters": {}
+    }
+    
+  }
+}
