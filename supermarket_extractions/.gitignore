@@ -1,11 +1,7 @@
-data
-env
-env_sample
-venv
-other_files
-src/market_001
-src/utils
+data/raw
+env/market_001.json
+env/config.yaml
 logs
-requirements.txt
-dockerfile
+other_files
+venv
 __pycache__
