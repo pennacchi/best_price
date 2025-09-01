@@ -4,12 +4,13 @@ The goal of my project is to allow supermarket customers to spend as little as p
 ![Logo](.github/src/img/overview.png)
 
 # To do
-- Create table to manage extract->load executions
+- Create script to adjust json files to be extracted on our operation.etl_extract
 - Create "market_001" load to database script
 - Create dashboard visualization
 - Create windows routine to start airflow
 
 # Done
+- Create table to manage extract->load executions
 - Create database 
 - Create "market_001" extraction to json
 - Create airflow docker-composer file

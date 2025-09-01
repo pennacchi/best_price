@@ -3,7 +3,7 @@ import sys
 import json
 from pathlib import Path
 from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 sys.path.append(str(Path.cwd() / 'supermarket_extractions'))
 
@@ -11,8 +11,7 @@ from src.utils.logger import get_logger
 from src.utils.file_operations import store_file
 from env.general import *
 from src.core.APIManager import APIManager
-from src.best_price_db.Operations_ETL_Extract import Operations_ETL_Extract
-
+from src.best_price_db.Operation_ETL_Extract import Operation_ETL_Extract
 class Extract():
   def __init__(self, logger):
     self.config = self.get_config()
@@ -103,7 +102,8 @@ class Extract():
     logger = get_logger('market_001_product_extraction', PATH_LOGS)
     logger.info('Starting extraction from Market 001...')
 
-    extraction_start = datetime.now()
+    
+    extraction_start = datetime.now(timezone(timedelta(hours=-3)))
 
     product_market = Extract(logger)
     
@@ -162,7 +162,9 @@ class Extract():
       # for c_idx, sub_sub_category in enumerate(sub_sub_categories):
     # for store in stores:
 
-    filename = f'products_{datetime.now().strftime("%Y_%m_%d %H_%M_%S")}.json'
+    logger.info('Products json ready to be stored...')
+
+    filename = f'products_{extraction_start.strftime("%Y_%m_%d %H_%M_%S")}.json'
 
     store_file(
       PATH_RAW_MARKET_001,
@@ -170,15 +172,20 @@ class Extract():
       json.dumps(product_final, indent=4)
     )
 
-    Operations_ETL_Extract(logger).insert(
+    logger.info('Products stored as raw json with success!')
+
+    Operation_ETL_Extract().insert(
       market='market_001',
       source_path=str(PATH_RAW_MARKET_001).replace(f'{Path.cwd()}/', ''),
       source_file=filename,
       extraction_start=extraction_start,
-      extraction_end=datetime.now(),
+      extraction_end=datetime.now(timezone(timedelta(hours=-3))),
       status='stored as raw json'
     )
-    logger.info('Extraction completed!')
+
+    logger.info('New operation.ETL_Extract inserted with success!')
+
+    logger.info('Extraction from Market 001 finished with success!')
 
 
 if __name__ == "__main__":

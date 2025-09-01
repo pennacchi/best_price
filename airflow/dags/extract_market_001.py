@@ -11,6 +11,7 @@ default_args = {
     'owner': 'Penna',
     'depends_on_past': False,
     'start_date': datetime(2025, 8, 27),
+    'schedule': '0 10 * * *',
     'retries': 0,
     'retry_delay': timedelta(seconds=20),
     'catchup': False

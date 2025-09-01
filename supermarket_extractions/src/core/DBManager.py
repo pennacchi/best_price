@@ -60,6 +60,7 @@ class DBManager:
           return True
       except Exception as e:
           self.connection.rollback()  # Rolls back the transaction in case of an error
+          print(f"Error to execute query: {e}")
           return False
   
   def fetch_all(self, query, params=None):
@@ -79,7 +80,14 @@ class DBManager:
           return records
       except Exception as e:
           return None
+      
+  def __enter__(self):
+    return self
   
+  def __exit__(self, exc_type, exc_value, traceback):
+    self.close()
+
+
 if __name__ == "__main__":
     # Use example
     db_user = os.environ.get("DB_USER", "postgres")
