@@ -49,9 +49,9 @@ class Load:
         product['urlDetails'],
         product['*store_id'],
         product['*store'],
-        product['*category'],
-        product['*subcategory'],
-        product['*sub_subcategory'],
+        product['*category'].replace('-', ' ').capitalize(),
+        product['*subcategory'].replace('-', ' ').capitalize(),
+        product['*sub_subcategory'].replace('-', ' ').capitalize(),
         extraction_id, # data come from this extraction
         loading_start, # transformed_at
       )
