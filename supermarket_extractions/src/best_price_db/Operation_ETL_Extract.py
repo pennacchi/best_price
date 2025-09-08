@@ -138,14 +138,13 @@ class Operation_ETL_Extract(Connection):
     for file in PATH_RAW_MARKET_001.iterdir():
       if file.name not in [extract['source_file'] for extract in extracts_all]:
 
-        now_time = datetime.now(timezone(timedelta(hours=-3)))
+        extraction_time = datetime.strptime(file.name.split('.')[0].replace('products_', ''), '%Y_%m_%d %H_%M_%S') # products_2025_08_31 23_06_20.json
         
-
         self.insert(
           market='market_001',
           source_path=PATH_RAW_MARKET_001,
           source_file=file.name,
-          extraction_start=now_time,
+          extraction_start=extraction_time,
           extraction_end=None,
           status='stored as raw json'
         )
@@ -177,6 +176,6 @@ if __name__ == '__main__':
   # with Operation_ETL_Extract() as etl_extract:
   #   etl_extract.insert('market_001', 'path', 'file', '2023-01-01 00:00:00', '2023-01-01 00:00:00', 'stored as raw json')
   
-  # with Operation_ETL_Extract() as etl_extract:
-  #   etl_extract.adjust_missing_json_files()
+  with Operation_ETL_Extract() as etl_extract:
+    etl_extract.adjust_missing_json_files()
   pass
